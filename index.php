@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,7 +20,7 @@
         <li><a href="#">What We Do</a></li>
         <li><a href="#">How To Help</a></li>
         <li><a href="#">Contact US</a></li>
-        <li><a href="../login/login.html">Login</a></li>
+        <li><a href="login/logindetails/login.php">Login</a></li>
       </ul>
     </nav>
 
@@ -132,34 +133,34 @@
       <div class="text">
         Contact us Form
       </div>
-      <form action="#">
+      <form action="#" method="POST">
         <div class="form-row">
           <div class="input-data">
-            <input type="text" required />
+            <input type="text" name="fname" required />
             <div class="underline"></div>
             <label for="">First Name</label>
           </div>
           <div class="input-data">
-            <input type="text" required />
+            <input type="text" name="lname" required />
             <div class="underline"></div>
             <label for="">Last Name</label>
           </div>
         </div>
         <div class="form-row">
           <div class="input-data">
-            <input type="text" required />
+            <input type="text" name="mail" required />
             <div class="underline"></div>
             <label for="">Email Address</label>
           </div>
           <div class="input-data">
-            <input type="text" required />
+            <input type="text" name="pname" required />
             <div class="underline"></div>
             <label for="">Pet Name</label>
           </div>
         </div>
         <div class="form-row">
           <div class="input-data textarea">
-            <textarea rows="8" cols="80" required></textarea>
+            <textarea rows="8" cols="80" name="message" required></textarea>
             <br />
             <div class="underline"></div>
             <label for="">Write your message</label>
@@ -167,12 +168,13 @@
             <div class="form-row submit-btn">
               <div class="input-data">
                 <div class="inner"></div>
-                <input type="submit" value="submit" />
+                <input type="submit" value="submit" name="contact" />
               </div>
             </div>
           </div>
         </div>
       </form>
+      <?php include("contactdetails/connection.php"); ?>
     </div>
     <!-- Footer  -->
     <div class="footer">
@@ -180,48 +182,41 @@
         <div class="footer-col">
           <h4>Info</h4>
           <ul class="links">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Compressions</a></li>
-            <li><a href="#">Customers</a></li>
-            <li><a href="#">Service</a></li>
-            <li><a href="#">Collection</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Pets</a></li>
+            <li><a href="#">Pet Gallery</a></li>
+            <li><a href="#">Contact Us</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Explore</h4>
           <ul class="links">
-            <li><a href="#">Free Designs</a></li>
-            <li><a href="#">Latest Designs</a></li>
-            <li><a href="#">Themes</a></li>
-            <li><a href="#">Popular Designs</a></li>
-            <li><a href="#">Art Skills</a></li>
-            <li><a href="#">New Uploads</a></li>
+            <li><a href="#">Who We Are</a></li>
+            <li><a href="#">What We DO</a></li>
+            <li><a href="#">How To Help US</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Login</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Legal</h4>
-          <ul class="links">
-            <li><a href="#">Customer Agreement</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">GDPR</a></li>
-            <li><a href="#">Security</a></li>
-            <li><a href="#">Testimonials</a></li>
-            <li><a href="#">Media Kit</a></li>
-          </ul>
-        </div>
+          <div class="lottiefour">
+            <script
+              src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+              type="module"
+            ></script>
 
-        <div class="footer-col">
-          <h4>Newsletter</h4>
-          <p>
-            Subscribe to our newsletter for a weekly dose of news, updates,
-            helpful tips, and exclusive offers.
-          </p>
-          <form action="#">
-            <input type="text" placeholder="Your email" required />
-            <button type="submit">SUBSCRIBE</button>
-          </form>
+            <dotlottie-player
+              src="https://lottie.host/f290c6b4-ff62-4e7a-a3bb-51db9f8add40/lfFVRODcLP.json"
+              background="transparent"
+              speed="0.70"
+              style="width: 200px; height: 200px;"
+              loop
+              autoplay
+            ></dotlottie-player>
+          </div>
+
           <div class="icons">
             <i class="fa-brands fa-facebook-f"></i>
             <i class="fa-brands fa-twitter"></i>
@@ -233,3 +228,24 @@
     </div>
   </body>
 </html>
+
+<?php
+if($_POST['contact'])
+{
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $email = $_POST['mail'];
+  $petname = $_POST['pname'];
+  $message = $_POST['message'];
+
+  $query = "INSERT INTO contact_us (FirstName, LastName, Email, PetName, Message) VALUES ('$fname','$lname','$email','$petname','$message')";
+  $data = mysqli_query($conn,$query);
+
+  if($data)
+  {
+    echo "Data inserted successfully";
+  }else{
+    echo "Data is not inserted!!!!!";
+  }
+}
+?>

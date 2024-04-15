@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
@@ -28,7 +27,6 @@
         speed="1"
         style="width: 345px; height: 345px;"
         loop
-        controls
         autoplay
         direction="1"
         mode="normal"
@@ -38,17 +36,36 @@
       <h1>Login</h1>
       <form method="post">
         <div class="txt_field">
-          <input type="text" required />
+          <input type="text" name="uname" required />
           <label>Username</label>
         </div>
         <div class="txt_field">
-          <input type="password" required />
+          <input type="password" name="pw" required />
           <label>Password</label>
         </div>
-        <div class="pass"><a href="forget.html"> Forgot Password?</a></div>
-        <input type="submit" value="Login" />
-        <div class="signup_link"><a href="admin.html">Admin?</a></div>
+        <!-- <div class="pass"><a href="forget.php"> Forgot Password?</a></div> -->
+        <input type="submit" value="Login" name="login"/>
+        <div class="signup_link"><a href="../admin/admin.php">Admin?</a></div>
       </form>
+      <?php include("../../contactdetails/connection.php"); ?>
     </div>
   </body>
 </html>
+
+<?php
+if($_POST['login'])
+{
+  $fname = $_POST['uname'];
+  $pass = $_POST['pw'];
+
+  $query = "INSERT INTO login (Username,Password) VALUES ('$fname','$pass')";
+  $data = mysqli_query($conn,$query);
+
+  if($data)
+  {
+    echo "Data inserted successfully";
+  }else{
+    echo "Data is not inserted!!!!!";
+  }
+}
+?>

@@ -361,15 +361,20 @@ form .form-row .textarea{
 .footer .footer-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 3.5rem;
-  padding: 60px;
+  /* padding: 0 70px 0 70px; */
+  /* padding-left: 10%; */
 }
 
 .footer-row .footer-col h4 {
   /* color: #fff; */
   font-size: 1.2rem;
   font-weight: 400;
+}
+
+.footer-col{
+  margin-left: 15%;
 }
 
 .footer-col .links {
@@ -390,51 +395,10 @@ form .form-row .textarea{
   color: #fff;
 }
 
-.footer-col p {
-  margin: 20px 0;
-  /* color: #bfbfbf; */
-  max-width: 300px;
-}
-
-.footer-col form {
-  display: flex;
-  gap: 5px;
-}
-
-.footer-col input {
-  height: 40px;
-  border-radius: 6px;
-  background: none;
-  width: 100%;
-  outline: none;
-  border: 1px solid black ;
-  /* caret-color: #fff; */
-  /* color: #fff; */
-  padding-left: 10px;
-}
-
-.footer-col input::placeholder {
-  color: #ccc;
-}
-
- .footer-col form button {
-  background: #1e99eb;
-  outline: none;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.2s ease;
-}
-
-.footer-col form button:hover {
-  background: #cecccc;
-}
-
 .footer-col .icons {
   display: flex;
-  margin-top: 30px;
+  margin-left: 30px;
+  /* margin-top: 30px; */
   gap: 30px;
   cursor: pointer;
 }
@@ -445,6 +409,10 @@ form .form-row .textarea{
 
 .footer-col .icons i:hover  {
   color: #fff;
+}
+
+.lottiefour{
+  transform: rotate(25deg);
 }
 
 @media (max-width: 768px) {

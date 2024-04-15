@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>Signup</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
-    <div class="lottiethree">
+  <div class="lottiethree">
       <script
         src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
         type="module"
@@ -24,22 +23,37 @@
       ></dotlottie-player>
     </div>
     <div class="center">
-      <h1>Signup</h1>
-      <form method="post">
+      <h1>Admin Login</h1>
+      <form method="POST">
         <div class="txt_field">
-          <input type="text" required />
+          <input type="text" name="uname" required />
           <label>Username</label>
         </div>
         <div class="txt_field">
-          <input type="password" required />
+          <input type="password" name="pw" required />
           <label>Password</label>
         </div>
-        <div class="txt_field">
-          <input type="password" required />
-          <label>Confirm Password</label>
-        </div>
-        <input type="submit" value="Signin" />
+        <input type="submit" value="Login" name="login"/>
       </form>
     </div>
   </body>
 </html>
+
+<?php
+$name = 'shekhar';
+$pass = 'root';
+if (isset($_POST['login'])) {
+  $username = $_POST["uname"];
+  $userpass = $_POST["pw"];
+  if ($username == $name && $userpass == $pass) {
+    ?>
+    <meta http-equiv = "refresh" content = "0; url = http://localhost:90/display.php" />
+    <?php
+  }
+  else{
+    echo 'Username or Password not matched';
+  }
+}
+?>
+
+
